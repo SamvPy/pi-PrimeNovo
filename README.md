@@ -1,1 +1,1 @@
-# pi-PrimeNovo
+# $\pi$-PrimeNovo
