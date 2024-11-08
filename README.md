@@ -1,6 +1,6 @@
 # $\pi$-PrimeNovo
 
-This is the official repo for the paper: **$\pi$-PrimeNovo: An Accurate and Efficient  Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing**
+This is the official repo for the paper: **[$\pi$-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.biorxiv.org/content/10.1101/2024.05.17.594647v2)**
 
 
 
@@ -136,3 +136,15 @@ This automatically uses all GPUs available in current machine.
 we include a sample running output ```./output.txt```
 
 The performance for evaluaiton will be reported at the end of output file. 
+
+## Citation
+
+```bibtex
+@article{zhang2024pi,
+  title={$\pi$-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing},
+  author={Zhang, Xiang and Ling, Tianze and Jin, Zhi and Xu, Sheng and Gao, Zhiqiang and Sun, Boyan and Qiu, Zijie and Dong, Nanqing and Wang, Guangshuai and Wang, Guibin and others},
+  journal={bioRxiv},
+  pages={2024--05},
+  year={2024},
+  publisher={Cold Spring Harbor Laboratory}
+}
