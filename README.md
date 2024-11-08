@@ -1,6 +1,6 @@
 # $\pi$-PrimeNovo
 
-This is the official repo for the paper: **[$\pi$-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.biorxiv.org/content/10.1101/2024.05.17.594647v2)**
+This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.biorxiv.org/content/10.1101/2024.05.17.594647v2)**
 
 
 
