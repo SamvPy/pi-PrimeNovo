@@ -3,7 +3,7 @@
 This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.biorxiv.org/content/10.1101/2024.05.17.594647v2)**
 
 
-
+We will release the future model update (user-interface, new model weight, optimized modules etc) here, please leave a **star** and **watching** if you want to get notified and follow up.
 ![prime](./assets/PrimeNovo.png)
 
 
