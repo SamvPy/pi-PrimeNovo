@@ -100,7 +100,7 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
 ## Run Instructions
 
-**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory: `PrimeNovo-main`. Do **not** use `cd PrimeNovo` !!!!!!!!!!!!!!!!!!!
+**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory: `pi-PrimeNovo`. Do **not** use `cd PrimeNovo` !!!!!!!!!!!!!!!!!!!
 
 ### Step 1: Download Required Files
 
