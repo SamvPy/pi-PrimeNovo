@@ -106,8 +106,8 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
 To evaluate the provided test MGF file (you can replace this MGF file with your own), download the following files:
 
-1. **Model Checkpoint**: [model_massive.ckpt](https://drive.google.com/file/d/12IZgeGP3ae3KksI5_82yuSTbk_M9sKNY/view?usp=share_link)
-2. **Test MGF File**: [Bacillus.10k.mgf](https://drive.google.com/file/d/1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT/view?usp=drive_link)
+1. **Model Checkpoint**: [model_massive.ckpt](https://drive.google.com/file/d/12IZgeGP3ae3KksI5_82yuSTbk_M9sKNY/view?usp=share_link){:target="_blank"}
+2. **Test MGF File**: [Bacillus.10k.mgf](https://drive.google.com/file/d/1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT/view?usp=drive_link){:target="_blank"}
 
 **Note:** If you are using a remote server, you can use the `gdown` package to easily download the content from Google Drive to your server disk.
 
