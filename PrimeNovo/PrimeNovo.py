@@ -199,7 +199,7 @@ def main(
         #     config, peak_path=peak_path, model=model, config_filename=config_fn
         # )
         model_runner.predict(peak_path, model, config, writer)
-        writer.save()
+        #writer.save()
     elif mode == "eval":
         logger.info("Evaluate a trained PrimeNovo model.")
         model_runner.evaluate(peak_path, model, config)
