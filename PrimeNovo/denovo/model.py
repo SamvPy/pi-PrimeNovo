@@ -767,14 +767,14 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         import os
         
             
-        with open("./denovo_LAUD.txt",'a') as f:
+        with open("./denovo.txt",'a') as f:
             for i in range(len(peptides)):
                 # print("label:",batch[2][i], ":" , peptides[i] , "\n")
                 if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
                     answer_is_correct = "correct"
                 else:
                     answer_is_correct = "incorrect"
-                    
+                #each line output this: label (title if label is none), predictions, charge, and confidence score
                 f.write("label: " + batch[2][i] + " prediction: " + "".join(peptides[i]) + " charge: " + str(int(batch[1][i][1])) + " score: " + str(float(inferscores[i]))+"\n")
                 
                 #f.write("label: " + batch[2][i] + " prediction : " + "".join(peptides[i]) + "  " + answer_is_correct + "\n")
