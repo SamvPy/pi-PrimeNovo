@@ -131,11 +131,27 @@ python -m PrimeNovo.PrimeNovo --mode=eval --peak_path=./bacillus.10k.mgf --model
 This automatically uses all GPUs available in current machine.
 
 
-## Sample run output:
+## run output:
 
 we include a sample running output ```./output.txt```
 
 The performance for evaluaiton will be reported at the end of output file. 
+
+If you are using ```denovo``` mode, you will be getting a ```denovo.txt``` file under the current directory.
+
+Each line in your ```denovo.txt``` contains 
+
+```bash
+Title (or label if provided in mgf), Model Prediction, Charge, Confidence Scores (range from 0 to 1)
+```
+
+for example, it might looks like this for a single spectra:
+
+```bash
+MS_19321_2024_02_DDA, ATTALP, -2, 0.99
+```
+
+
 
 ## Citation
 
