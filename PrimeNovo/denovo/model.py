@@ -738,7 +738,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
             # print("{}/pep_recall".format(key), pep_recall)
             # sys.stdout.flush()
         return loss
-
+    
     def predict_step(
         self, batch: Tuple[torch.Tensor, torch.Tensor, torch.Tensor], *args
     ) -> Tuple[torch.Tensor, torch.Tensor, List[List[str]], torch.Tensor]:
@@ -766,8 +766,16 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-            
-        with open("./denovo.txt",'a') as f:
+        file_path = "./denovo.csv"
+        headers = "label\tprediction\tcharge\tscore\n"
+
+        # Check if the file exists and whether it contains headers
+        if not os.path.exists(file_path) or open(file_path, 'r').readline().strip() != headers.strip():
+            with open(file_path, 'a') as f:
+                f.write(headers)
+
+        # Append data
+        with open(file_path,'a') as f:
             for i in range(len(peptides)):
                 # print("label:",batch[2][i], ":" , peptides[i] , "\n")
                 if batch[2][i].replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I") == "".join(peptides[i]).replace("$", "").replace("N+0.984", "D").replace("Q+0.984", "E").replace("L","I"):
@@ -775,12 +783,12 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 else:
                     answer_is_correct = "incorrect"
                 #each line output this: label (title if label is none), predictions, charge, and confidence score
-                f.write("label: " + batch[2][i] + " prediction: " + "".join(peptides[i]) + " charge: " + str(int(batch[1][i][1])) + " score: " + str(float(inferscores[i]))+"\n")
+                f.write(batch[2][i].replace("\t", " ") + "\t" + "".join(peptides[i]) + "\t" + str(int(batch[1][i][1])) + "\t" + str(float(inferscores[i])) + "\n")
                 
                 #f.write("label: " + batch[2][i] + " prediction : " + "".join(peptides[i]) + "  " + answer_is_correct + "\n")
         
         return batch[2], batch[1], peptides  #batch[2]: identifier
-
+    
     def on_train_epoch_end(self) -> None:
         """
         Log the training loss at the end of each epoch.
