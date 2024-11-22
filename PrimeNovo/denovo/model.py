@@ -780,7 +780,10 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
                 sequence = ""
                 for el in peptides[i]:
                     if len(el) > 1:
-                        sequence += el[0] + '[' + el[1:] + ']'
+                        if sequence == "" and (el[0] == '-' or el[0] == '+') :
+                            sequence += '[' + el + ']-'
+                        else:
+                            sequence += el[0] + '[' + el[1:] + ']'
                     else:
                         sequence += el
 
