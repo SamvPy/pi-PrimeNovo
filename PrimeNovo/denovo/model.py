@@ -766,7 +766,7 @@ class Spec2Pep(pl.LightningModule, ModelMixin):
         peptides , inferscores = self.forward(batch[0], batch[1], batch[2])
         import os
         
-        file_path = "./denovo.csv"
+        file_path = "./denovo.tsv"
         headers = "label\tprediction\tcharge\tscore\n"
 
         # Check if the file exists and whether it contains headers

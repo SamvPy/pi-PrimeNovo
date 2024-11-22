@@ -2,15 +2,12 @@
 
 This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.biorxiv.org/content/10.1101/2024.05.17.594647v2)**
 
-
 We will release the future model update (user-interface, new model weight, optimized modules etc) here, please leave a **star** and **watching** if you want to get notified and follow up.
 ![prime](./assets/PrimeNovo.png)
 
-
-
 ## Environment Setup
 
-Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves. 
+Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
 
 Create a new conda environment first:
 
@@ -18,7 +15,7 @@ Create a new conda environment first:
 conda create --name PrimeNovo python=3.10
 ```
 
-This will create an anaconda environment 
+This will create an anaconda environment
 
 Activate this environment by running:
 
@@ -32,8 +29,6 @@ then install dependencies:
 pip install -r ./requirements.txt
 ```
 
-
-
 installing gcc and g++:
 
 ```bash
@@ -43,7 +38,6 @@ conda install -c conda-forge cxx-compiler
 
 then install ctcdecode, which is the package for ctc-beamsearch decoding
 
-
 ```bash
 git clone --recursive https://github.com/WayenVan/ctcdecode.git
 cd ctcdecode
@@ -52,22 +46,17 @@ cd ..  #this is needed as ctcdecode can not be imported under the current direct
 rm -rf ctcdecode
 ```
 
-
 (if there is no errors, ignore next line and preceed to CuPy install)
 
-
 if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
+
 ```bash
 conda install -c conda-forge gcc_linux-64=9.3.0
 ```
 
-
-
-
 lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
 **_Please install following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
-
 
 **Check your Cuda Version using command nvidia-smi, CUDA version will be on right top corner**
 
@@ -79,13 +68,11 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 |v11.2 ~ 11.8 (x86_64 / aarch64)| pip install cupy-cuda11x |
 |v12.x (x86_64 / aarch64)| pip install cupy-cuda12x |
 
-
 ## Model Settings
 
 **n_beam**: number of CTC-paths (beams) considered during inference. We recommend a value of 40.
 
 **mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this set to 0.1, we will only obtain peptitde that falls under the mass range [measured_mass-0,1, measured_mass+0,1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
-
 
 **PMC_enable**: Weather use PMC decoding unit or not, either ```True``` or ```False```.
 
@@ -96,7 +83,6 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 **max_mz**: Maximum peak m/z allowed, peaks with larger m/z are discarded. We recommend a value of 6500.
 
 **min_intensity**: Min peak intensity allowed, less intense peaks are discarded. We recommend a value of 0.0.
-
 
 ## Run Instructions
 
@@ -130,28 +116,23 @@ python -m PrimeNovo.PrimeNovo --mode=eval --peak_path=./bacillus.10k.mgf --model
 
 This automatically uses all GPUs available in current machine.
 
+### Step 4: analyze the output
 
-## run output:
+We include a sample running output ```./output.txt```. The performance for evaluation will be reported at the end of output file.
 
-we include a sample running output ```./output.txt```
+If you are using ```denovo``` mode, you will be getting a ```denovo.tsv``` file under the current directory. The file has the following structure:
 
-The performance for evaluaiton will be reported at the end of output file. 
+| label | prediction | charge | score |
+| --- | --- | --- | --- |
+| Title in MGF document | Sequence in [ProForma](https://doi.org/10.1021/acs.jproteome.1c00771) notation| Charge, as a number | Confidence score as number in range 0 and 1 using scientific notation |
 
-If you are using ```denovo``` mode, you will be getting a ```denovo.txt``` file under the current directory.
+The example below contains two peptides predicted based on the same spectrum:
 
-Each line in your ```denovo.txt``` contains 
-
-```bash
-Title (or label if provided in mgf), Model Prediction, Charge, Confidence Scores (range from 0 to 1)
+```tsv
+label	prediction	charge	score
+MS_19321_2024_02_DDA	ATTALP	2	0.99
+MS_19321_2024_02_DDA	TAM[+15.995]CTR	2	0.87
 ```
-
-for example, it might looks like this for a single spectra:
-
-```bash
-MS_19321_2024_02_DDA, ATTALP, -2, 0.99
-```
-
-
 
 ## Citation
 
