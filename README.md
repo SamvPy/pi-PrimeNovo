@@ -46,7 +46,7 @@ cd ..  #this is needed as ctcdecode can not be imported under the current direct
 rm -rf ctcdecode
 ```
 
-(if there is no errors, ignore next line and preceed to CuPy install)
+(if there are no errors, ignore the next line and proceed to CuPy install)
 
 if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
 
@@ -56,9 +56,9 @@ conda install -c conda-forge gcc_linux-64=9.3.0
 
 lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
-**_Please install following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
+**_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
 
-**Check your Cuda Version using command nvidia-smi, CUDA version will be on right top corner**
+**Check your CUDA version using command nvidia-smi, the CUDA version will be on the top-right corner**
 
 | cuda version | command |
 |-------|-------|
@@ -72,7 +72,7 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
 **n_beam**: number of CTC-paths (beams) considered during inference. We recommend a value of 40.
 
-**mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this set to 0.1, we will only obtain peptitde that falls under the mass range [measured_mass-0,1, measured_mass+0,1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
+**mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this is set to 0.1, we will only obtain peptides that fall under the mass range [measured_mass-0.1, measured_mass+0.1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
 
 **PMC_enable**: Weather use PMC decoding unit or not, either ```True``` or ```False```.
 
@@ -114,13 +114,13 @@ Execute the following command in the terminal:
 python -m PrimeNovo.PrimeNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./model_massive.ckpt
 ```
 
-This automatically uses all GPUs available in current machine.
+This automatically uses all GPUs available in the current machine.
 
 ### Step 4: analyze the output
 
-We include a sample running output ```./output.txt```. The performance for evaluation will be reported at the end of output file.
+We include a sample running output ```./output.txt```. The performance for evaluation will be reported at the end of the output file.
 
-If you are using ```denovo``` mode, you will be getting a ```denovo.tsv``` file under the current directory. The file has the following structure:
+If you are using ```denovo``` mode, you will get a ```denovo.tsv``` file under the current directory. The file has the following structure:
 
 | label | prediction | charge | score |
 | --- | --- | --- | --- |
