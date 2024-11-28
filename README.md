@@ -126,7 +126,7 @@ If you are using ```denovo``` mode, you will get a ```denovo.tsv``` file under t
 | --- | --- | --- | --- |
 | Title in MGF document | Sequence in [ProForma](https://doi.org/10.1021/acs.jproteome.1c00771) notation| Charge, as a number | Confidence score as number in range 0 and 1 using scientific notation |
 
-The example below contains two peptides predicted based on the some given spectrum:
+The example below contains two peptides predicted based on some given spectrum:
 
 ```tsv
 label	prediction	charge	score
