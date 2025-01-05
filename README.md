@@ -137,11 +137,13 @@ MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
 ## Citation
 
 ```bibtex
-@article{zhang2024pi,
-  title={$\pi$-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing},
-  author={Zhang, Xiang and Ling, Tianze and Jin, Zhi and Xu, Sheng and Gao, Zhiqiang and Sun, Boyan and Qiu, Zijie and Dong, Nanqing and Wang, Guangshuai and Wang, Guibin and others},
-  journal={bioRxiv},
-  pages={2024--05},
-  year={2024},
-  publisher={Cold Spring Harbor Laboratory}
+@article{zhang2025pi,
+  title={$\pi$-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing},
+  author={Zhang, Xiang and Ling, Tianze and Jin, Zhi and Xu, Sheng and Gao, Zhiqiang and Sun, Boyan and Qiu, Zijie and Wei, Jiaqi and Dong, Nanqing and Wang, Guangshuai and others},
+  journal={Nature Communications},
+  volume={16},
+  number={1},
+  pages={267},
+  year={2025},
+  publisher={Nature Publishing Group UK London}
 }
