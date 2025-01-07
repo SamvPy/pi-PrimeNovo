@@ -99,7 +99,7 @@ logger:
 num_sanity_val_steps: 0
 
 train_from_scratch: False
-
+n_nodes: 1
 save_model: False
 train_from_resume: False
 model_save_folder_path: "./NON355"
