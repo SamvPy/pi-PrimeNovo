@@ -5,6 +5,11 @@ This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Effici
 We will release the future model update (user-interface, new model weight, optimized modules etc) here, please leave a **star** and **watching** if you want to get notified and follow up.
 ![prime](./assets/PrimeNovo.png)
 
+## Update：
+Jan. 2024: For people who wants to further understand the PMC algorithm designs, please refer to the paper here : [link](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html)
+The algorithms are of the high similarity with different application in NLP rather than in De Novo Sequencing. 
+
+
 ## Environment Setup
 
 Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
