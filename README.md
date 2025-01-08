@@ -9,8 +9,8 @@ We will release the future model update (user-interface, new model weight, optim
 
 **Jan. 2024**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
 
-**Jan. 2024**: For people who wants to further understand the PMC algorithm designs, please refer to the paper here : [link](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
-The algorithms are of the high similarity with different application in NLP rather than in De Novo Sequencing, it provides you with a different way of understanding from both different application-aspect and algorithm-writing-aspect.
+**Jan. 2024**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [link](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
+While the algorithms are highly similar, yet still different if you read it carefully, this paper applies them in the context of NLP rather than De Novo Sequencing. It offers valuable insights from both an application perspective and an algorithm expression perspective, helping readers understand the design from multiple angles.
 
 
 ## Environment Setup
