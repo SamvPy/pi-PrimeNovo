@@ -7,9 +7,9 @@ We will release the future model update (user-interface, new model weight, optim
 
 ## Update：
 
-**Jan. 2024**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
+**Jan. 2025**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
 
-**Jan. 2024**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [A Character-Level Length-Control Algorithm for Non-Autoregressive Sentence Summarization](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
+**Jan. 2025**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [A Character-Level Length-Control Algorithm for Non-Autoregressive Sentence Summarization](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
 
 While the algorithms are highly similar, yet still different if you read it carefully, this paper applies them in the context of NLP rather than De Novo Sequencing. It offers valuable insights from both an application perspective and an algorithm expression perspective, helping readers understand the design from multiple angles.
 
