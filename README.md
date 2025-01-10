@@ -149,6 +149,8 @@ MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
 
 ## Citation
 
+Bibtex：
+
 ```bibtex
 @article{zhang2025pi,
   title={$\pi$-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing},
@@ -160,3 +162,9 @@ MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
   year={2025},
   publisher={Nature Publishing Group UK London}
 }
+
+Standard:
+
+```
+Zhang, X., Ling, T., Jin, Z. et al. π-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing. Nat Commun 16, 267 (2025). https://doi.org/10.1038/s41467-024-55021-3
+```
