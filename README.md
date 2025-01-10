@@ -16,7 +16,11 @@ While the algorithms are highly similar, yet still different if you read it care
 
 ## Environment Setup
 
-Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.  The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive. 
+Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.  
+
+The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive. 
+
+Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
 
 Create a new conda environment first:
 
