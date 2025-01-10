@@ -163,8 +163,8 @@ Bibtex：
   publisher={Nature Publishing Group UK London}
 }
 
-Standard:
+Standard Citation:
 
-```
+
 Zhang, X., Ling, T., Jin, Z. et al. π-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing. Nat Commun 16, 267 (2025). https://doi.org/10.1038/s41467-024-55021-3
-```
+
