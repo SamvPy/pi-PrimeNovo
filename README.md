@@ -21,7 +21,9 @@ While the algorithms are highly similar, yet still different if you read it care
 
 3.  Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
 
-4.  We use lmdb for fast MS data reading during trianing and inference time. Once you provide your mgf and execute PrimeNovo, an lmdb file will be automatically generated for you. You can save this lmdb file and use it directly next time during training/inference, and no processing time will needed second time you load it. 
+4.  We use lmdb for fast MS data reading during trianing and inference time. Once you provide your mgf and execute PrimeNovo, an lmdb file will be automatically generated for you. You can save this lmdb file and use it directly next time during training/inference, and no processing time will needed second time you load it. This is very good for large MS file processing and saves hours to days spent on pre-processing data and loading data to memory each time you train/inference a neural network model. For detailed implementation refer to dataloader and dataset file in our code base. 
+
+   
 ## Environment Setup
 
 
