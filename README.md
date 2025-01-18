@@ -13,14 +13,18 @@ We will release the future model update (user-interface, new model weight, optim
 
 While the algorithms are highly similar, yet still different if you read it carefully, this paper applies them in the context of NLP rather than De Novo Sequencing. It offers valuable insights from both an application perspective and an algorithm expression perspective, helping readers understand the design from multiple angles.
 
+## Notes from Authors 
 
+1. we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
+
+2.  The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive.
+
+3.  Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
+
+4.  We use lmdb for fast MS data reading during trianing and inference time. Once you provide your mgf and execute PrimeNovo, an lmdb file will be automatically generated for you. You can save this lmdb file and use it directly next time during training/inference, and no processing time will needed second time you load it. 
 ## Environment Setup
 
-Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.  
 
-The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive. 
-
-Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
 
 Create a new conda environment first:
 
