@@ -90,6 +90,8 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 
 ## Model Settings
 
+Some of the important settings in config.yaml under ./PrimeNovo 
+
 **n_beam**: number of CTC-paths (beams) considered during inference. We recommend a value of 40.
 
 **mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this is set to 0.1, we will only obtain peptides that fall under the mass range [measured_mass-0.1, measured_mass+0.1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
