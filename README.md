@@ -7,7 +7,7 @@ We will release the future model update (user-interface, new model weight, optim
 
 ## Update：
 
-**Mar. 2025**: We have released PrimeNovo-PTM code, including the weight for our finetuned PTM weight for Phosphorylation (+79.97) using LUAD-2020 dataset, which is exactly as detailed in our paper. It's currently under directory `[pi-PrimeNovo-PTM](./pi-PrimeNovo-PTM)`, one can modify this code into any desired PTM he wants as per our instructions in `README.md` in this directory. 
+**Mar. 2025**: We have released PrimeNovo-PTM code, including the weight for our finetuned PTM weight for Phosphorylation (+79.97) using LUAD-2020 dataset, which is exactly as detailed in our paper. It's currently under directory [pi-PrimeNovo-PTM](./pi-PrimeNovo-PTM), one can modify this code into any desired PTM he wants as per our instructions in `README.md` in this directory. 
 
 **Jan. 2025**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
 
