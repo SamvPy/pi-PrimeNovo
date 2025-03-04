@@ -1,114 +1,35 @@
-# $\pi$-PrimeNovo
+# PTM model 
 
-This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Efficient Non-Autoregressive Deep Learning Model for De Novo Peptide Sequencing](https://www.nature.com/articles/s41467-024-55021-3)**
 
-We will release the future model update (user-interface, new model weight, optimized modules etc) here, please leave a **star** and **watching** if you want to get notified and follow up.
-![prime](./assets/PrimeNovo.png)
-
-## Update：
-
-**Jan. 2025**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
-
-**Jan. 2025**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [A Character-Level Length-Control Algorithm for Non-Autoregressive Sentence Summarization](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
-
-While the algorithms are highly similar, yet still different if you read it carefully, this paper applies them in the context of NLP rather than De Novo Sequencing. It offers valuable insights from both an application perspective and an algorithm expression perspective, helping readers understand the design from multiple angles.
-
-## Notes from Authors 
-
-1. we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
-
-2.  The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive.
-
-3.  Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
-
-4.  We use lmdb for fast MS data reading during trianing and inference time. Once you provide your mgf and execute PrimeNovo, an lmdb file will be automatically generated for you. You can save this lmdb file and use it directly next time during training/inference, and no processing time will needed second time you load it. This is very good for large MS file processing and saves hours to days spent on pre-processing data and loading data to memory each time you train/inference a neural network model. For detailed implementation refer to dataloader and dataset file in our code base. 
-
-5. We notice that CuPy Sometimes gives random errors, which can be resolved simply by re-running code or switching a GPU node.
-   
 ## Environment Setup
 
+Set up exactly same environment as before!
 
+## What is this model?
 
-Create a new conda environment first:
+our released code and weight is an example of PrimeNovo finetuned on "Phosphorylation (+79.97)" data. 
 
-```
-conda create --name PrimeNovo python=3.10
-```
+This model is obtained by finetuning original PrimeNovo (trained with MassiveKB) on 2020-Cell-LUAD dataset, where training data is phosphorylation-enriched, so it's made for detecting phosphorylation PTM in some given data set. 
 
-This will create an anaconda environment
+That's said, this model can predict 1 more token than original primenovo, for easy-processing, we have made such additional PTM using token "B", which is last token we added to config.yaml in this directory. 
 
-Activate this environment by running:
+When model is outputing its prediction, whenever there is a "B", it means it's "Phosphorylation (+79.97)" in this case.
 
-```
-conda activate PrimeNovo
-```
+But you can train/finetune your own PrimeNovo-PTM by changing this "B" to any other token you want, but your training data also has to change the target PTM to "B" so they matches during trianing.
 
-then install dependencies:
+If you want to changes this B to anything other than Phosphorylation (+79.97), here are all the places you need to make changes:
 
-```
-pip install -r ./requirements.txt
-```
+1. in `mass_con.py`: change variable `mass_b =79.9663` to whatever new PTM mole weight it has.
 
-installing gcc and g++:
+2. in `model.py`: change variable `mass_b =79.9663` to whatever new PTM mole weight it has.
 
-```bash
-conda install -c conda-forge gcc
-conda install -c conda-forge cxx-compiler
-```
+3. in `transformers.py`: change variable `mass_b =79.9663` to whatever new PTM mole weight it has.
 
-then install ctcdecode, which is the package for ctc-beamsearch decoding
-
-```bash
-git clone --recursive https://github.com/WayenVan/ctcdecode.git
-cd ctcdecode
-pip install .
-cd ..  #this is needed as ctcdecode can not be imported under the current directory
-rm -rf ctcdecode
-```
-
-(if there are no errors, ignore the next line and proceed to CuPy install)
-
-if you encountered issues with C++ (gxx and gcc) version errors in this step, install gcc with version specified as :  
-
-```bash
-conda install -c conda-forge gcc_linux-64=9.3.0
-```
-
-lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
-
-**_Please install the following Cupy package in a GPU available env, If you are using a slurm server, this means you have to enter a interative session with sbatch to install Cupy, If you are using a machine with GPU already on it (checking by nvidia-smi), then there's no problem_**
-
-**Check your CUDA version using command nvidia-smi, the CUDA version will be on the top-right corner**
-
-| cuda version | command |
-|-------|-------|
-|v10.2 (x86_64 / aarch64)| pip install cupy-cuda102 |
-|v11.0 (x86_64)| pip install cupy-cuda110 |
-|v11.1 (x86_64)| pip install cupy-cuda111 |
-|v11.2 ~ 11.8 (x86_64 / aarch64)| pip install cupy-cuda11x |
-|v12.x (x86_64 / aarch64)| pip install cupy-cuda12x |
-
-## Model Settings
-
-Some of the important settings in config.yaml under ./PrimeNovo 
-
-**n_beam**: number of CTC-paths (beams) considered during inference. We recommend a value of 40.
-
-**mass_control_tol**: This setting is only useful when **PMC_enable** is ```True```. The tolerance of PMC-decoded mass from the measured mass by MS, when mass control algorithm (PMC) is used. For example, if this is set to 0.1, we will only obtain peptides that fall under the mass range [measured_mass-0.1, measured_mass+0.1]. ```Measured mass``` is calculated by : (pepMass - 1.007276) * charge - 18.01. pepMass and charge are given by input spectrum file (MGF).
-
-**PMC_enable**: Weather use PMC decoding unit or not, either ```True``` or ```False```.
-
-**n_peaks**: Number of the most intense peaks to retain, any remaining peaks are discarded. We recommend a value of 800.
-
-**min_mz**: Minimum peak m/z allowed, peaks with smaller m/z are discarded. We recommend a value of 1.
-
-**max_mz**: Maximum peak m/z allowed, peaks with larger m/z are discarded. We recommend a value of 6500.
-
-**min_intensity**: Min peak intensity allowed, less intense peaks are discarded. We recommend a value of 0.0.
+And that's it, you can then finetune on your own dataset with additional `1` PTM, just replace that PTM with letter "B" anywhere it appears 
 
 ## Run Instructions
 
-**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory: `pi-PrimeNovo`. Do **not** use `cd PrimeNovo` !!!!!!!!!!!!!!!!!!!
+**Note!!!!!!!!!!!!!!!!!!:** All the following steps should be performed under the main directory: `pi-PrimeNovo-PTM`. Do **not** use `cd ..` !!!!!!!!!!!!!!!!!!!
 
 ### Step 1: Download Required Files
 
