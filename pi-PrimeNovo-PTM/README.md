@@ -1,23 +1,20 @@
-# PTM model 
+# PTM Model
 
+This repository contains the code and weights for a PrimeNovo model finetuned on "Phosphorylation (+79.97)" data. The model was adapted from the original PrimeNovo (trained on MassiveKB) by finetuning it on the 2020-Cell-LUAD dataset. The training data was enriched with phosphorylation data, so the model is designed for detecting phosphorylation PTMs.
 
 ## Environment Setup
 
-Set up exactly same environment as before!
+Set up the environment exactly as before to ensure compatibility.
 
-## What is this model?
+## Model Overview
 
-our released code and weight is an example of PrimeNovo finetuned on "Phosphorylation (+79.97)" data. 
+The finetuned model has been modified to predict one additional token compared to the original PrimeNovo. For convenience, we added an extra PTM token `"B"` in the `config.yaml` located in this directory. When the model outputs a `"B"`, it represents "Phosphorylation (+79.97)".
 
-This model is obtained by finetuning original PrimeNovo (trained with MassiveKB) on 2020-Cell-LUAD dataset, where training data is phosphorylation-enriched, so it's made for detecting phosphorylation PTM in some given data set. 
+You can also train or finetune your own PrimeNovo-PTM model by reassigning the token `"B"` to a different PTM of your choice. **Important:** If you change the token `"B"` to another value, ensure that your training data reflects this change so that the target PTM matches the modified token during training.
 
-That's said, this model can predict 1 more token than original primenovo, for easy-processing, we have made such additional PTM using token "B", which is last token we added to config.yaml in this directory. 
+## Modifying the PTM Token
 
-When model is outputing its prediction, whenever there is a "B", it means it's "Phosphorylation (+79.97)" in this case.
-
-But you can train/finetune your own PrimeNovo-PTM by changing this "B" to any other token you want, but your training data also has to change the target PTM to "B" so they matches during trianing.
-
-If you want to changes this B to anything other than Phosphorylation (+79.97), here are all the places you need to make changes:
+If you decide to change the PTM from "Phosphorylation (+79.97)" to a different modification, update the PTM molecular weight in the following files:
 
 1. in `mass_con.py`: change variable `mass_b =79.9663` to whatever new PTM mole weight it has.
 
