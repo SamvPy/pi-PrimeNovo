@@ -17,7 +17,7 @@ While the algorithms are highly similar, yet still different if you read it care
 
 ## Notes from Authors 
 
-1. we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
+1. We developed our algorithm in CentOS Linux Version 7. For other OS systems, users need to check compability themselves.
 
 2.  The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive.
 
