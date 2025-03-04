@@ -33,10 +33,10 @@ And that's it, you can then finetune on your own dataset with additional `1` PTM
 
 ### Step 1: Download Required Files
 
-To evaluate the provided test MGF file (you can replace this MGF file with your own), download the following files:
+To evaluate the mgf containing Phosphated PTM:
 
-1. **Model Checkpoint**: [model_massive.ckpt](https://drive.google.com/file/d/12IZgeGP3ae3KksI5_82yuSTbk_M9sKNY/view?usp=share_link)
-2. **Test MGF File**: [Bacillus.10k.mgf](https://drive.google.com/file/d/1HqfCETZLV9ZB-byU0pqNNRXbaPbTAceT/view?usp=drive_link)
+1. **Model Checkpoint**: [PTM_Phosphorylation.ckpt](https://drive.google.com/file/d/1YcF9VNE1gFF8T0EfwcFb7v1tiKw25-ai/view?usp=share_link)
+
 
 **Note:** If you are using a remote server, you can use the `gdown` package to easily download the content from Google Drive to your server disk.
 
@@ -54,7 +54,7 @@ The `--mode` argument can be set to either:
 Execute the following command in the terminal:
 
 ```bash
-python -m PrimeNovo.PrimeNovo --mode=eval --peak_path=./bacillus.10k.mgf --model=./model_massive.ckpt
+python -m PrimeNovo.PrimeNovo --mode=eval --peak_path=./PTM_test.mgf --model=./PTM_Phosphorylation.ckpt
 ```
 
 This automatically uses all GPUs available in the current machine.
@@ -76,6 +76,8 @@ label	prediction	charge	score
 MS_19321_2024_02_DDA	ATTALP	2	0.99
 MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
 ```
+
+NOTE: "B" amino acid will stands for the additional PTM added to this code, in this case it is Phosphorylation.
 
 ## Citation
 
