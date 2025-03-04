@@ -7,6 +7,8 @@ We will release the future model update (user-interface, new model weight, optim
 
 ## Update：
 
+**Mar. 2025**: We have released PrimeNovo-PTM code, including the weight for our finetuned PTM weight for Phosphorylation (+79.97) using LUAD-2020 dataset, which is exactly as detailed in our paper. It's currently under directory `./pi-PrimeNovo-PTM`, one can modify this code into any desired PTM he wants as per our instructions in `README.md` in this directory. 
+
 **Jan. 2025**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
 
 **Jan. 2025**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [A Character-Level Length-Control Algorithm for Non-Autoregressive Sentence Summarization](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
