@@ -22,6 +22,8 @@ If you decide to change the PTM from "Phosphorylation (+79.97)" to a different m
 
 3. in `transformers.py`: change variable `mass_b =79.9663` to whatever new PTM mole weight it has.
 
+4. in `config.yaml`: change "B": 79.9663 to whatever new PTM mole weight it has.
+
 And that's it, you can then finetune on your own dataset with additional `1` PTM, just replace that PTM with letter "B" anywhere it appears in your training/testing data.
 
 ## Run Instructions
