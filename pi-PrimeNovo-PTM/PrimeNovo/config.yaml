@@ -65,6 +65,10 @@ residues:
   "+43.006": 43.005814      # Carbamylation
   "-17.027": -17.026549     # NH3 loss
   "+43.006-17.027": 25.980265
+  #Phospo PTM.
+  "B": 79.9663
+
+
 n_log: 1
 tb_summarywriter:
 

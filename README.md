@@ -5,9 +5,31 @@ This is the official repo for the paper: **[π-PrimeNovo: An Accurate and Effici
 We will release the future model update (user-interface, new model weight, optimized modules etc) here, please leave a **star** and **watching** if you want to get notified and follow up.
 ![prime](./assets/PrimeNovo.png)
 
+## Update：
+
+**Mar. 2025**: We have released PrimeNovo-PTM code, including the weight for our finetuned PTM weight for Phosphorylation (+79.97) using LUAD-2020 dataset, which is exactly as detailed in our paper. It's currently under directory [pi-PrimeNovo-PTM](./pi-PrimeNovo-PTM), one can modify this code into any desired PTM he wants as per our instructions in `README.md` in this directory. 
+
+**Jan. 2025**: We will be releasing PrimeNovo-PTM weight in near future, stay tuned. 
+
+**Jan. 2025**: For those interested in gaining a deeper understanding of PMC algorithm designs, please refer to this paper : [A Character-Level Length-Control Algorithm for Non-Autoregressive Sentence Summarization](https://proceedings.neurips.cc/paper_files/paper/2022/hash/bb0f9af6a4881ccb6e14c11b8b4be710-Abstract-Conference.html).
+
+While the algorithms are highly similar, yet still different if you read it carefully, this paper applies them in the context of NLP rather than De Novo Sequencing. It offers valuable insights from both an application perspective and an algorithm expression perspective, helping readers understand the design from multiple angles.
+
+## Notes from Authors 
+
+1. We developed our algorithm in CentOS Linux Version 7. For other OS systems, users need to check compability themselves.
+
+2.  The MacOS users (with non-intel core) currently can not use this model due to un-supported CUDA drive.
+
+3.  Machines that don't have Nvidia-GPUs can not use our algorithms as PMC is written directly with CUDA core, which is only supported by Nvidia-GPUs.
+
+4.  We use lmdb for fast MS data reading during trianing and inference time. Once you provide your mgf and execute PrimeNovo, an lmdb file will be automatically generated for you. You can save this lmdb file and use it directly next time during training/inference, and no processing time will needed second time you load it. This is very good for large MS file processing and saves hours to days spent on pre-processing data and loading data to memory each time you train/inference a neural network model. For detailed implementation refer to dataloader and dataset file in our code base. 
+
+5. We notice that CuPy Sometimes gives random errors, which can be resolved simply by re-running code or switching a GPU node.
+   
 ## Environment Setup
 
-Note: we have developed our algorithm in CentOS Linux Version 7, other OS system need to check compability themselves.
+
 
 Create a new conda environment first:
 
@@ -69,6 +91,8 @@ lastly, install CuPy to use our CUDA-accelerated precise mass-control decoding:
 |v12.x (x86_64 / aarch64)| pip install cupy-cuda12x |
 
 ## Model Settings
+
+Some of the important settings in config.yaml under ./PrimeNovo 
 
 **n_beam**: number of CTC-paths (beams) considered during inference. We recommend a value of 40.
 
@@ -136,6 +160,8 @@ MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
 
 ## Citation
 
+Bibtex：
+
 ```bibtex
 @article{zhang2025pi,
   title={$\pi$-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing},
@@ -147,3 +173,10 @@ MS_19326_2024_02_DDA	TAM[+15.995]TR	2	0.87
   year={2025},
   publisher={Nature Publishing Group UK London}
 }
+```
+
+Standard Citation:
+
+```
+Zhang, X., Ling, T., Jin, Z. et al. π-PrimeNovo: an accurate and efficient non-autoregressive deep learning model for de novo peptide sequencing. Nat Commun 16, 267 (2025). https://doi.org/10.1038/s41467-024-55021-3
+```
